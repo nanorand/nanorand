@@ -84,6 +84,14 @@ To get a local copy up and running follow these simple example steps.
     go get github.com/nanorand/nanorand
    ```
 
+for other version
+
+   ```sh
+    go get github.com/nanorand/nanorand@vX.X.X
+   ```
+
+replace X for number of version. For example: v0.1.1
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
