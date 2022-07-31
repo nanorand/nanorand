@@ -63,7 +63,7 @@ There are many great ways to generate "cryptographical-properly" 6-digit codes i
 
 Here's why:
 * Your time should be focused on creating something amazing. A function GenerateShort for digit up to length of 7 is the faster than other ways, because it use nanosecond of time on your machine. 
-* You shouldn't be doing google "How to create 6-digit code" again and again. Just try it and you would love.
+* You shouldn't be doing google "How to generate 6-digit number" again and again. Just try it and you would love.
 * You should implement DRY principles to the rest of your life :smile:
 
 Of course, this project don't suite your purposes if you are creating Pentagon security system. In other way it works great.
