@@ -8,8 +8,9 @@ import (
 	"time"
 )
 
-// Generate can take time for an iteration with length 100 or more
-func Generate(length int) (string, error) {
+// Gen generates pseudo-random number
+// generation can take time for an iteration with length 100 or more
+func Gen(length int) (string, error) {
 	if length < 0 {
 		return "", errors.New("invalid length")
 	}
@@ -24,10 +25,10 @@ func Generate(length int) (string, error) {
 		i = int(math.Floor(float64(length / 7)))
 		p = length % 7
 	} else {
-		return GenerateShort(length)
+		return generateShort(length)
 	}
 
-	arr, err := GenerateArray(7, i, 23)
+	arr, err := generateArrayShort(7, i, 23)
 	if err != nil {
 		return "", err
 	}
@@ -38,12 +39,11 @@ func Generate(length int) (string, error) {
 			g += g[:1]
 		}
 
-		row := g[:7]
-		output += row
+		output += g[:7]
 	}
 
 	if p != 0 {
-		piece, err := GenerateShort(p)
+		piece, err := generateShort(p)
 		if err != nil {
 			return "", err
 		}
@@ -53,13 +53,14 @@ func Generate(length int) (string, error) {
 	return output, nil
 }
 
-// GenerateShort return only small numbers up to 7
-func GenerateShort(length int) (string, error) {
+// generateShort return only small numbers up to 7
+func generateShort(length int) (string, error) {
 	if length > 7 || length <= 0 {
-		return fmt.Sprintf("invalid length %d", length), nil
+		return "", errors.New(fmt.Sprintf("invalid length %d. Try to use Gen() method instead", length))
 	}
 
 	timeNow := time.Now().Nanosecond()
+
 	g := fmt.Sprint(timeNow)
 	if len(g) < length {
 		g += g[:1]
@@ -67,9 +68,8 @@ func GenerateShort(length int) (string, error) {
 	return g[:length], nil
 }
 
-// GenerateArray parameters length of one element, amount of elements, some value between 1 and 50 for sleep offset.
-// if offset not in the range, it constantly set to 20
-func GenerateArray(length int, amount int, offset int) ([]int, error) {
+// generateArrayShort Available length up to 7
+func generateArrayShort(length int, amount int, offset int) ([]int, error) {
 	if offset <= 0 || offset > 50 {
 		offset = 20
 	}
@@ -77,19 +77,21 @@ func GenerateArray(length int, amount int, offset int) ([]int, error) {
 
 	// store elements to slice of integer
 	for i := range arr {
-		t, err := GenerateShort(length)
+		t, err := generateShort(length)
 		if err != nil {
-			return nil, err
+			return nil, errors.New(fmt.Sprintf("invalid length %d. Try to use GenerateArray() method instead", length))
 		}
 		elem, err := strconv.Atoi(t)
 		if err != nil {
 			return nil, errors.New(t)
 		}
+
 		arr[i] = elem
 
 		// calling sleep method
-		sleepAmount, _ := strconv.Atoi(t[:1])
+		sleepAmount, _ := strconv.Atoi(t[length-1:])
 		sleepAmount++
+
 		dur := time.Duration(sleepAmount*offset) * time.Nanosecond
 		time.Sleep(dur)
 	}
