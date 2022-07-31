@@ -100,7 +100,9 @@ import (
 )
 
 func main() {
-	code, err := nanorand.GenerateShort(6)
+	fmt.Println("6 digit code")
+
+	code, err := nanorand.Gen(6)
 	if err != nil {
 		return
 	}
