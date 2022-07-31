@@ -1,5 +1,5 @@
 <!-- PROJECT SHIELDS -->
-[![Go Report Card](https://goreportcard.com/badge/github.com/nanorand/nanorand)](https://goreportcard.com/report/github.com/nanorand/nanorand)
+[![Build Status](https://github.com/nanorand/nanorand/actions/workflows/go.yml/badge.svg?branch=master)](https://github.com/nanorand/nanorand/actions)[![Go Report Card](https://goreportcard.com/badge/github.com/nanorand/nanorand)](https://goreportcard.com/report/github.com/nanorand/nanorand)
 [![GoDoc](https://pkg.go.dev/badge/github.com/nanorand/nanorand?status.svg)](https://pkg.go.dev/github.com/nanorand/nanorand?tab=doc)
 [![Go Version](https://img.shields.io/github/go-mod/go-version/nanorand/nanorand)](https://go.dev/)
 [![Code Size](https://img.shields.io/github/languages/code-size/nanorand/nanorand)](https://github.com/nanorand/nanorand/blob/master/nanorand.go)
