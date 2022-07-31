@@ -1,3 +1,3 @@
-module github.com/nanorand/nanorand
+module github.com/manazoid/nanorand
 
 go 1.18
